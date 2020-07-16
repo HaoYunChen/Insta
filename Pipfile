@@ -11,6 +11,8 @@ django-imagekit = "*"
 pillow = "*"
 django-annoying = "*"
 django-crispy-forms = "*"
+gunicorn = "*"
+whitenoise = "*"
 
 [requires]
 python_version = "3.8"
