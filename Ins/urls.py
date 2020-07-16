@@ -15,8 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-from Ins.views import Helo
+from Ins.views import Helo, PostDetailView, PostsView, PostCreateView, PostUpdateView, PostDeleteView, addLike, UserDetailView, addComment, follow, ProfileUpdateView
 
 urlpatterns = [
-    path('', Helo.as_view(), name='home')
+    path('helo', Helo.as_view(), name = 'helo'),
+    path('', PostsView.as_view(), name = 'posts'),
+    path('post/<int:pk>/', PostDetailView.as_view(), name = 'post_detail'), #<int:pk> i gave u an integer as a primary key
+    path('post/new', PostCreateView.as_view(), name = 'post_create'),
+    path('posts/update/<int:pk>', PostUpdateView.as_view(), name = 'post_update'),
+    path('posts/delete/<int:pk>', PostDeleteView.as_view(), name = 'post_delete'),
+    path('like', addLike, name='addLike'),
+    path('user/<int:pk>/', UserDetailView.as_view(), name = 'user_detail'),
+    path('comment', addComment, name='addComment'),
+    path('togglefollow', follow, name='togglefollow'),
+    path('user/update/<int:pk>', ProfileUpdateView.as_view(), name = 'profile_update'),
 ]
