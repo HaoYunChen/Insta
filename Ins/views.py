@@ -24,6 +24,10 @@ class PostsView(LoginRequiredMixin, ListView):
             following.add(conn.following)
         return Post.objects.filter(author__in=following)
 
+class UsersView(ListView):
+    model = InstaUser # I'll send this object list to this template
+    template_name = 'user_list.html'
+
 class PostDetailView(DetailView):
     model = Post
     template_name = 'post_detail.html'

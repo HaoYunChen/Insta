@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% load custom_tags %}
+
+{% block content %}
+
+<div class="card-listing" style="width: 36rem;">
+    <div class="card-header">
+        <h2>Users</h2>
+</div>
+    {% for user in object_list %}
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+                <a href="{% url 'user_detail' user.pk %}">
+                    {% if user.profile_pic %}
+                        <img class="picture-circle--medium" src="/{{user.profile_pic.url}}">
+                    {% endif %}
+                    {{ user.username }}
+                </a>
+            </li>
+        </ul>
+    {% endfor %}
+</div>
+
+
+
+{% endblock content %}
